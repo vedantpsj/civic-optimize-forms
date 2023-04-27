@@ -20,25 +20,33 @@ module.exports = async function (request) {
   // Get Current form
   const currentForm = await forms.getForm(formId, false);
 
-  // get index of element with name form_response_limit
-  const index = currentForm.elements.findIndex((el) => {
-    return el.name === "form_response_limit";
-  });
+  let element = undefined;
+  function findElementWithName(form) {
+    form.elements.forEach((el) => {
+      if (el.type === "page") {
+        findElementWithName(el);
+      } else {
+        const ele = form.elements.find((el) => {
+          return el.name === "form_response_limit";
+        });
+        if (ele) {
+          element = ele;
+        }
+      }
+    });
+  }
 
-  if (index != -1) {
-    // Result of submission
-    const result = await forms.getSubmissionData(formId, submissionId, isDraft);
-
+  findElementWithName(currentForm);
+  if (element) {
     // Update Secret to be same as webhook secret
     currentForm.submissionEvents[0].configuration.secret =
       process.env.WEBHOOK_SECRET;
 
     // Update defaultValue of the form
-    currentForm.elements[index].defaultValue =
-      result.submission.form_response_limit - 1;
+    element.defaultValue = element.defaultValue - 1;
 
     // Mark form as ended if defaultValue reaches 0
-    if (currentForm.elements[index].defaultValue == 0) {
+    if (element.defaultValue == 0) {
       currentForm.publishEndDate = new Date().toISOString();
     }
 
