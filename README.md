@@ -2,11 +2,11 @@
 
 ## Introduction
 
-Uses @oneblink/sdk to lookup and calculate total price of the complete cart, custom cart and price associated.
+Uses @oneblink/sdk to lookup and calculate total price of the complete cart, custom cart with quantity.
 
 ## Loom Walkthrough
 
-[View Loom Video Here](https://www.loom.com/share/27baeac1953a48e98ae7aa14ab35e86b)
+[View Loom Video Here](https://www.loom.com/share/26ddaeb6f3ca4af4af9def904fc1a1b2)
 
 ## Usage
 
