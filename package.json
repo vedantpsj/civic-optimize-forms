@@ -1,0 +1,14 @@
+{
+  "name": "theater-rentals",
+  "version": "1.0.0",
+  "description": "Manage inventory using custom forms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@oneblink/sdk": "^2.4.0"
+  }
+}
