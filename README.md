@@ -1,16 +1,16 @@
-# Theater Rentals
+# Theater Rentals inventory
 
 ## Introduction
 
-Uses @oneblink/sdk to lookup and calculate total price of the complete cart, custom cart with quantity.
+Uses @oneblink/sdk to manage inventory based based on admin form and a user form from which user can view and purchase inventory.
 
 ## Loom Walkthrough
 
-[View Loom Video Here](https://www.loom.com/share/26ddaeb6f3ca4af4af9def904fc1a1b2)
+[View Loom Video Here](https://www.loom.com/share/bcd98d575bd743909db15101400d0a6d)
 
 ## Usage
 
-Civicplus along with @oneblink/cli NodeJS SDK helps us create API's which can be used for data lookups, data sets, webhooks.
+Civicplus along with @oneblink/cli NodeJS SDK helps us create API's which can be used for data lookups, data sets, webhooks and form validators.
 
 One can create API Hoisting in Civicplus dashboard/ host API'S manually.
 
@@ -26,6 +26,10 @@ Serve locally
 civicplus api serve
 
 ```
+
+### JSON file on server
+
+A json file on a server with read/write access need to be provided as file on civic-plus server has only read access and outside environment can not overwrite this file using filesystem (fs).
 
 ## Setup
 
@@ -81,7 +85,6 @@ npm i -g  @oneblink/sdk
 4. Configure .blinkmrc.json
 
 ```
-
     {
       "route": "/ROUTE_PATH",
       "module": "./PATH_TO_MODULE_FILE"
@@ -112,7 +115,6 @@ civicplus api deploy
 4. Configure .blinkmrc.json
 
 ```
-
     {
       "route": "/ROUTE_PATH",
       "module": "./PATH_TO_MODULE_FILE"
@@ -132,6 +134,45 @@ civicplus api deploy
 
 8. Go to the Forms > Builder, Select the field you want to add lookup to. Enable data lookup / Element lookup. Select the label of your added option set in this.
 
+## Getting started with using CivicOptimize Webhooks
+
+1. Create a routing file.
+
+2. Add module.exports function in the routing file.
+
+3. Configure .blinkmrc.json
+
+```
+    {
+      "route": "/ROUTE_PATH",
+      "module": "./PATH_TO_MODULE_FILE"
+    }
+
+```
+
+4. Deploy the code using
+
+```
+civicplus api deploy
+```
+
+4. In the CIVIC PLUS DASHBOARD, Go to Forms > Workflow > Submission Event > Select Event type - Webhook: Hosted API. Select Hoisted API. Select Route. Add a secret. Save
+
+5. Make sure to validate this secret in the webhook.
+
+## Use variables with oneblink
+
+One can add variables in the .blinkmrc.json
+
+```
+   "variables": {
+      "accessKey": "XXX",
+      "secretKey": "XXX",
+      "WEBHOOK_SECRET": "XXX"
+    }
+
+```
+
 ## Technologies
 
 1. Oneblink
@@ -145,12 +186,18 @@ civicplus api deploy
 
 [Calculation Element](https://www.civicoptimize.civicplus.help/hc/en-us/articles/360046852414-Calculation-Element)
 
+[getSubmissionData](https://oneblink.github.io/sdk-node-js/classes/oneblink.Forms.html#getSubmissionData)
+
+[validated form example](https://github.com/oneblink/cli/blob/master/examples/api/form-server-validation/src/validate-form.js)
+
+[axios](https://www.npmjs.com/package/axios)
+
 ## Dev notes
 
-I have used option sets for the title and used element lookup for custom inventory and rest of the form.
+1. One has only read access to the civicplus server and can not write a file on it.
 
-There is an issue with using the checkboxes for the inventory as the cost used as value can be same for multiple items. if we do so and check one of the options, all the options with same value get selected.
+2. I have used a JSON file on a server which acts as dataset for the api's.
+   Axios is used to pull and push this JSON file.
 
-We have 2 options, One is to pass a unique value inside the checkboxes but that will hinder calculations. Another one is to use multiple checkboxes/radio as items and pass options as YES/NO for selection.
-
-For now I have used 2nd approach as it satisfies this use case.
+3. Issue with getting the form response via web-hook using 'oneblink/sdk'.
+   (Error while initializing form Error [OneBlinkAPIError]: Could not find Key)

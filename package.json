@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@oneblink/sdk": "^2.4.0"
+    "@oneblink/sdk": "^2.6.0",
+    "axios": "^1.4.0"
   }
 }

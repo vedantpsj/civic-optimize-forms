@@ -1,6 +1,6 @@
-const inventory = require("../assets/inventory.json");
+const { getFile } = require("../services/utils");
 
-module.exports = function (req, res) {
+module.exports = async function (req, res) {
   if (!req.body || !req.body.submission || !req.body.submission.show_title) {
     return res.setStatusCode(400).setPayload({
       message: "No inventory present",
@@ -9,6 +9,7 @@ module.exports = function (req, res) {
 
   const show_title = req.body.submission.show_title;
 
+  const inventory = await getFile();
   const items = inventory.filter(
     (inventoryItem) => inventoryItem.show_title === show_title
   );

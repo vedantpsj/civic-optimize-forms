@@ -4,9 +4,9 @@
 /* eslint-disable */
 const OneBlink = require("@oneblink/sdk");
 const CivicPlus = require("@oneblink/sdk/tenants/civicplus");
-const inventory = require("../assets/inventory.json");
+const { getFile } = require("../services/utils");
 
-module.exports.post = function (req, res) {
+module.exports.post = async function (req, res) {
   // If the request does not contain the essential data to process,
   // finish early with a custom error message for the user to see.
   if (!req.body || !req.body.submission || !req.body.submission.show_title) {
@@ -21,6 +21,8 @@ module.exports.post = function (req, res) {
 
   // Access the submission data from the request body.
   const show_title = req.body.submission.show_title;
+  const inventory = await getFile();
+
   const items = inventory.filter(
     (inventoryItem) => inventoryItem.show_title === show_title
   );
@@ -49,7 +51,7 @@ module.exports.post = function (req, res) {
       readOnly: true,
       options: [
         {
-          value: item.rent_for_2_weeks,
+          value: "" + item.rent_for_2_weeks,
           label: `Included $${item.rent_for_2_weeks}`,
         },
       ],
