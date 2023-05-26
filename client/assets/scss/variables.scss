@@ -1,0 +1,20 @@
+// Colors
+$color-primary: #3C4AF0;
+$color-primary-light: #E9EAF5;
+$color-white: #fff;
+$color-black: #000;
+
+// Fonts
+$font-size-base: 16px;
+$font-family-base: 'Inter', sans-serif;
+$line-height-base: 1.4;
+
+// breakpoints
+$small: 575px;
+$mobile: 767px;
+
+// Radius
+$radius : 4px;
+
+// mixins
+@import 'mixins';

@@ -3,308 +3,287 @@
     "show_title": "Beauty and the Beast Jr.",
     "item": "Castle",
     "category": "Set",
-    "rent_for_2_weeks": 750.0,
+    "rent_for_2_weeks": 750,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Belle's Cottage",
     "category": "Set",
-    "rent_for_2_weeks": 100.0,
+    "rent_for_2_weeks": 100,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Village",
     "category": "Set",
-    "rent_for_2_weeks": 75.0,
-    "quantity": 1
-  },
-  {
-    "show_title": "Beauty and the Beast Jr.",
-    "item": "Chip's Cart",
-    "category": "Prop",
-    "rent_for_2_weeks": 40.0,
-    "quantity": 1
+    "rent_for_2_weeks": "75",
+    "quantity": "1"
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Gaston's Chair Wagon",
     "category": "Set",
-    "rent_for_2_weeks": 50.0,
+    "rent_for_2_weeks": 50,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Maurice's Chair Wagon",
     "category": "Set",
-    "rent_for_2_weeks": 35.0,
+    "rent_for_2_weeks": 35,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Belle's Bed Wagon",
     "category": "Set",
-    "rent_for_2_weeks": 40.0,
+    "rent_for_2_weeks": 40,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Maurice's Invention",
     "category": "Prop",
-    "rent_for_2_weeks": 75.0,
+    "rent_for_2_weeks": 75,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Village Fountain",
     "category": "Set",
-    "rent_for_2_weeks": 40.0,
+    "rent_for_2_weeks": 40,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Village Well",
     "category": "Set",
-    "rent_for_2_weeks": 40.0,
+    "rent_for_2_weeks": 40,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Gaston's Bar",
     "category": "Set",
-    "rent_for_2_weeks": 35.0,
+    "rent_for_2_weeks": 35,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Thrones",
     "category": "Set",
-    "rent_for_2_weeks": 20.0,
+    "rent_for_2_weeks": 20,
     "quantity": 2
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Saloon Benches",
     "category": "Set",
-    "rent_for_2_weeks": 5.0,
+    "rent_for_2_weeks": 5,
     "quantity": 10
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Dining Table with tops",
     "category": "Set",
-    "rent_for_2_weeks": 10.0,
+    "rent_for_2_weeks": 10,
     "quantity": 2
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Dining Chairs",
     "category": "Set",
-    "rent_for_2_weeks": 5.0,
+    "rent_for_2_weeks": 5,
     "quantity": 2
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "West Wing Chair",
     "category": "Set",
-    "rent_for_2_weeks": 5.0,
+    "rent_for_2_weeks": 5,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Booksellers Cart",
     "category": "Prop",
-    "rent_for_2_weeks": 10.0,
+    "rent_for_2_weeks": 10,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Saloon Tables",
     "category": "Set",
-    "rent_for_2_weeks": 5.0,
+    "rent_for_2_weeks": 5,
     "quantity": 2
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Beast's Mirror",
     "category": "Prop",
-    "rent_for_2_weeks": 10.0,
+    "rent_for_2_weeks": 10,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Prop Rose w/platform & dome",
     "category": "Prop",
-    "rent_for_2_weeks": 25.0,
+    "rent_for_2_weeks": 25,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Mechanical Rose w/platform & dome",
     "category": "Prop",
-    "rent_for_2_weeks": 50.0,
+    "rent_for_2_weeks": 50,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Beast Gold shirt",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Beast Gold brocade vest",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Beast Tan satin embroidered vest",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Beast Gold lace jabot",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Beast Brown pants with gold fleck",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Beast Blue velvet pants",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Beast Blue/gold brocade jacket",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Beast Gold velour cape",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Beast legs on stretch pants",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Beast feet – pull on over shoes",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Beast arms",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Beast Wig with horns",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Belle Blue satin bodice with attached apron",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Belle White peasant bodice",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Belle Blue skirt",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Belle Blue pantaloons",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Belle Pink bodice-",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Belle White shirt with pink trim",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Belle Gold ball gown bodice",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Belle Gold ball gown skirt",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   },
   {
     "show_title": "Beauty and the Beast Jr.",
     "item": "Belle Gold tiara, bun head piece",
     "category": "Costume",
-    "rent_for_2_weeks": 2.0,
-    "quantity": 1
-  },
-  {
-    "show_title": "The Little Mermaid",
-    "item": "Castle",
-    "category": "Set",
-    "rent_for_2_weeks": 500.0,
-    "quantity": 1
-  },
-  {
-    "show_title": "Singing In The Rain",
-    "item": "Castle",
-    "category": "Set",
-    "rent_for_2_weeks": 500.0,
+    "rent_for_2_weeks": 2,
     "quantity": 1
   }
 ]

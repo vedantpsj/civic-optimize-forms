@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import "./assets/scss/variables.scss";
+@import "./assets/scss/base.scss";
+@import "./assets/scss/button.scss";
+
+.theaterData {
+  background-color: $color-primary-light;
+  min-height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  &__form {
+    max-width: 1200px;
+    width: 100%;
+    margin: 15px;
+    border-radius: 10px;
+    background-color: $color-white;
+    &-sidebar {
+      background-color: $color-primary;
+      padding: 40px 35px;
+      border-radius: 10px 0 0 10px;
+      position: relative;
+      @include max-screen($mobile) {
+        border-radius: 10px 10px 0 0;
+        padding: 30px;
+      }
+    }
+    &-sidebarAction {
+      background-color: rgba($color-white, 0.1);
+      border-radius: 50px;
+      padding: 18px 17px;
+      gap: 11px;
+      margin-bottom: 17px;
+      cursor: pointer;
+      a {
+        color: $color-white !important;
+        @include max-screen($small) {
+          font-size: 14px;
+        }
+      }
+      img {
+        @include rounded(25px);
+        @include max-screen($small) {
+          width: 22px;
+          height: 22px;
+        }
+        &:nth-of-type(2) {
+          display: none;
+        }
+      }
+
+      &.active {
+        background-color: $color-white;
+        img {
+          &:nth-of-type(2) {
+            display: block;
+          }
+          &:nth-of-type(1) {
+            display: none;
+          }
+        }
+        a {
+          color: $color-primary !important;
+        }
+      }
+    }
+    &-content {
+      border-radius: 0 10px 10px 0;
+      padding: 30px 50px;
+      min-height: 700px;
+      @include max-screen($mobile) {
+        min-height: auto;
+        padding: 30px;
+      }
+      h1 {
+        font-size: 26px;
+        font-weight: 700;
+        position: relative;
+        margin: 0;
+        padding-left: 15px;
+        &::before {
+          content: "";
+          display: block;
+          height: 47px;
+          width: 5px;
+          background-color: $color-primary;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 0;
+        }
+        @include max-screen($mobile) {
+          font-size: 20px;
+        }
+      }
+      input {
+        &.form-control {
+          height: 52px;
+          border: 1px solid $color-primary-light;
+          font-size: 14px;
+          @include max-screen($small) {
+            height: 46px;
+            padding: 12px 0.75rem;
+          }
+        }
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+    &-formLabel {
+      font-size: 16px;
+      font-weight: 500;
+      color: $color-black;
+      @include max-screen($small) {
+        font-size: 14px;
+      }
+    }
+    &-formFloating {
+      label {
+        padding: 15px 0.75rem;
+        font-size: 14px;
+        @include max-screen($small) {
+          padding: 12px 0.75rem;
+        }
+      }
+    }
+    &-button {
+      button {
+        background-color: $color-primary;
+        color: $color-white;
+        font-size: 16px;
+        height: 50px;
+        border-radius: 4px;
+        margin-left: auto;
+        min-width: 160px;
+        font-weight: 500;
+        @include max-screen($small) {
+          font-size: 14px;
+          height: 40px;
+          min-width: 100px;
+        }
+        &:hover {
+          color: $color-white;
+        }
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+      }
+    }
+    &-formSelect {
+      height: 52px;
+      border: 1px solid $color-primary-light;
+      font-size: 14px;
+      &:focus {
+        box-shadow: none;
+        border-color: $color-primary-light;
+      }
+    }
+  }
+  &__message {
+    max-width: 300px;
+    padding: 0;
+    margin: 0px 10px 0px 0px;
+    z-index: 1;
+    border: 0px;
+    background: transparent;
+    display: none;
+  }
+}

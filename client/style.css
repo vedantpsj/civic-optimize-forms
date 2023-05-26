@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+a {
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+  display: block;
+  max-width: 100%;
+}
+
+:focus {
+  outline: none;
+}
+
+.btn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  height: 40px;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+}
+.btn.primary {
+  background-color: #3C4AF0;
+  color: #fff;
+}
+
+.theaterData {
+  background-color: #E9EAF5;
+  min-height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+}
+.theaterData__form {
+  max-width: 1200px;
+  width: 100%;
+  margin: 15px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.theaterData__form-sidebar {
+  background-color: #3C4AF0;
+  padding: 40px 35px;
+  border-radius: 10px 0 0 10px;
+  position: relative;
+}
+@media only screen and (max-width: 767px) {
+  .theaterData__form-sidebar {
+    border-radius: 10px 10px 0 0;
+    padding: 30px;
+  }
+}
+.theaterData__form-sidebarAction {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 18px 17px;
+  gap: 11px;
+  margin-bottom: 17px;
+  cursor: pointer;
+}
+.theaterData__form-sidebarAction a {
+  color: #fff !important;
+}
+@media only screen and (max-width: 575px) {
+  .theaterData__form-sidebarAction a {
+    font-size: 14px;
+  }
+}
+.theaterData__form-sidebarAction img {
+  width: 25px;
+  height: 25px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media only screen and (max-width: 575px) {
+  .theaterData__form-sidebarAction img {
+    width: 22px;
+    height: 22px;
+  }
+}
+.theaterData__form-sidebarAction img:nth-of-type(2) {
+  display: none;
+}
+.theaterData__form-sidebarAction.active {
+  background-color: #fff;
+}
+.theaterData__form-sidebarAction.active img:nth-of-type(2) {
+  display: block;
+}
+.theaterData__form-sidebarAction.active img:nth-of-type(1) {
+  display: none;
+}
+.theaterData__form-sidebarAction.active a {
+  color: #3C4AF0 !important;
+}
+.theaterData__form-content {
+  border-radius: 0 10px 10px 0;
+  padding: 30px 50px;
+  min-height: 700px;
+}
+@media only screen and (max-width: 767px) {
+  .theaterData__form-content {
+    min-height: auto;
+    padding: 30px;
+  }
+}
+.theaterData__form-content h1 {
+  font-size: 26px;
+  font-weight: 700;
+  position: relative;
+  margin: 0;
+  padding-left: 15px;
+}
+.theaterData__form-content h1::before {
+  content: "";
+  display: block;
+  height: 47px;
+  width: 5px;
+  background-color: #3C4AF0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+}
+@media only screen and (max-width: 767px) {
+  .theaterData__form-content h1 {
+    font-size: 20px;
+  }
+}
+.theaterData__form-content input.form-control {
+  height: 52px;
+  border: 1px solid #E9EAF5;
+  font-size: 14px;
+}
+@media only screen and (max-width: 575px) {
+  .theaterData__form-content input.form-control {
+    height: 46px;
+    padding: 12px 0.75rem;
+  }
+}
+.theaterData__form-content input:focus {
+  box-shadow: none;
+}
+.theaterData__form-formLabel {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+@media only screen and (max-width: 575px) {
+  .theaterData__form-formLabel {
+    font-size: 14px;
+  }
+}
+.theaterData__form-formFloating label {
+  padding: 15px 0.75rem;
+  font-size: 14px;
+}
+@media only screen and (max-width: 575px) {
+  .theaterData__form-formFloating label {
+    padding: 12px 0.75rem;
+  }
+}
+.theaterData__form-button button {
+  background-color: #3C4AF0;
+  color: #fff;
+  font-size: 16px;
+  height: 50px;
+  border-radius: 4px;
+  margin-left: auto;
+  min-width: 160px;
+  font-weight: 500;
+}
+@media only screen and (max-width: 575px) {
+  .theaterData__form-button button {
+    font-size: 14px;
+    height: 40px;
+    min-width: 100px;
+  }
+}
+.theaterData__form-button button:hover {
+  color: #fff;
+}
+.theaterData__form-button button:focus {
+  outline: none;
+  box-shadow: none;
+}
+.theaterData__form-formSelect {
+  height: 52px;
+  border: 1px solid #E9EAF5;
+  font-size: 14px;
+}
+.theaterData__form-formSelect:focus {
+  box-shadow: none;
+  border-color: #E9EAF5;
+}
+.theaterData__message {
+  max-width: 300px;
+  padding: 0;
+  margin: 0px 10px 0px 0px;
+  z-index: 1;
+  border: 0px;
+  background: transparent;
+  display: none;
+}/*# sourceMappingURL=style.css.map */
