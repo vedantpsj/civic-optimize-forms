@@ -83,17 +83,16 @@
               <label class="theaterData__form-formLabel mb-1"
                 >Category<span class="text-danger">*</span></label
               >
-              <div class="form-floating theaterData__form-formFloating">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="floatingInput"
-                  placeholder="Add category"
-                  name="category"
-                  required
-                />
-                <label for="floatingInput">Category</label>
-              </div>
+              <select
+                class="theaterData__form-formSelect form-select"
+                name="category"
+                required
+              >
+                <option value="">Choose category</option>
+                <option value="Costume">Costume</option>
+                <option value="Prop">Prop</option>
+                <option value="Set Piece">Set Piece</option>
+              </select>
             </div>
             <div class="mb-3">
               <label class="theaterData__form-formLabel mb-1"
@@ -106,8 +105,9 @@
                   id="floatingInput"
                   placeholder="Add item cost"
                   name="cost"
-                  min="1"
+                  min="0.001"
                   required
+                  step="any"
                 />
                 <label for="floatingInput">Item cost</label>
               </div>
@@ -177,18 +177,19 @@
                 <label class="theaterData__form-formLabel mb-1"
                   >Category<span class="text-danger">*</span></label
                 >
-                <div class="form-floating theaterData__form-formFloating">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="category"
-                    placeholder="Add category"
-                    name="category"
-                    required
-                    disabled
-                  />
-                  <label for="floatingInput">Category</label>
-                </div>
+
+                <select
+                  class="theaterData__form-formSelect form-select"
+                  id="category"
+                  name="category"
+                  required
+                  disabled
+                >
+                  <option value="">Choose category</option>
+                  <option value="Costume">Costume</option>
+                  <option value="Prop">Prop</option>
+                  <option value="Set Piece">Set Piece</option>
+                </select>
               </div>
               <div class="mb-3">
                 <label class="theaterData__form-formLabel mb-1"
@@ -201,9 +202,10 @@
                     id="cost"
                     placeholder="Add item cost"
                     name="cost"
-                    min="1"
+                    min="0.001"
                     required
                     disabled
+                    step="any"
                   />
                   <label for="floatingInput">Item cost</label>
                 </div>

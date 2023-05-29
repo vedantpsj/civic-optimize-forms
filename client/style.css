@@ -36,12 +36,12 @@ img {
   font-family: "Inter", sans-serif;
 }
 .btn.primary {
-  background-color: #3C4AF0;
+  background-color: #c017a2;
   color: #fff;
 }
 
 .theaterData {
-  background-color: #E9EAF5;
+  background-color: #e9eaf5;
   min-height: 100vh;
   width: 100%;
   overflow-y: auto;
@@ -54,7 +54,7 @@ img {
   background-color: #fff;
 }
 .theaterData__form-sidebar {
-  background-color: #3C4AF0;
+  background-color: #c017a2;
   padding: 40px 35px;
   border-radius: 10px 0 0 10px;
   position: relative;
@@ -106,7 +106,7 @@ img {
   display: none;
 }
 .theaterData__form-sidebarAction.active a {
-  color: #3C4AF0 !important;
+  color: #c017a2 !important;
 }
 .theaterData__form-content {
   border-radius: 0 10px 10px 0;
@@ -131,7 +131,7 @@ img {
   display: block;
   height: 47px;
   width: 5px;
-  background-color: #3C4AF0;
+  background-color: #c017a2;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -144,7 +144,7 @@ img {
 }
 .theaterData__form-content input.form-control {
   height: 52px;
-  border: 1px solid #E9EAF5;
+  border: 1px solid #e9eaf5;
   font-size: 14px;
 }
 @media only screen and (max-width: 575px) {
@@ -176,7 +176,7 @@ img {
   }
 }
 .theaterData__form-button button {
-  background-color: #3C4AF0;
+  background-color: #c017a2;
   color: #fff;
   font-size: 16px;
   height: 50px;
@@ -201,12 +201,12 @@ img {
 }
 .theaterData__form-formSelect {
   height: 52px;
-  border: 1px solid #E9EAF5;
+  border: 1px solid #e9eaf5;
   font-size: 14px;
 }
 .theaterData__form-formSelect:focus {
   box-shadow: none;
-  border-color: #E9EAF5;
+  border-color: #e9eaf5;
 }
 .theaterData__message {
   max-width: 300px;

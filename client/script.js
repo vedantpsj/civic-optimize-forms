@@ -202,7 +202,10 @@ async function postData(values) {
     await axios.post(`${API_URL}/manage-inventory`, values);
     showToast("Success", "alert-success");
     setTimeout(() => {
-      window.location.reload();
+      addForm.reset();
+      editForm.reset();
+      hideToast();
+      addFunc();
     }, 500);
   } catch (err) {
     showToast(err?.response?.data?.message ?? err.message, "alert-danger");
@@ -229,6 +232,8 @@ function toValidateForm(values) {
 function showToast(message, _class) {
   if (action_type === "1" || action_type == 2) {
     snackBar1.innerText = message;
+    snackBar1.classList.remove("alert-danger");
+    snackBar1.classList.remove("alert-success");
     snackBar1.classList.add(_class);
     snackBar1.style.display = "block";
     setTimeout(() => {
@@ -238,6 +243,8 @@ function showToast(message, _class) {
     }, 10000);
   } else {
     snackBar.innerText = message;
+    snackBar.classList.remove("alert-danger");
+    snackBar.classList.remove("alert-success");
     snackBar.classList.add(_class);
     snackBar.style.display = "block";
     setTimeout(() => {
@@ -245,5 +252,20 @@ function showToast(message, _class) {
       snackBar.classList.remove(_class);
       snackBar.style.display = "none";
     }, 10000);
+  }
+}
+
+function hideToast() {
+  if (snackBar1) {
+    snackBar1.innerText = "";
+    snackBar1.classList.remove("alert-danger");
+    snackBar1.classList.remove("alert-success");
+    snackBar1.style.display = "none";
+  }
+  if (snackBar) {
+    snackBar.innerText = "";
+    snackBar.classList.remove("alert-danger");
+    snackBar.classList.remove("alert-success");
+    snackBar.style.display = "none";
   }
 }
