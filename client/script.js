@@ -14,7 +14,7 @@ const snackBar1 = document.getElementById("snackBar1");
 const editBtn = document.getElementById("editBtn");
 const addBtn = document.getElementById("addBtn");
 var action_type = "0";
-const API_URL = "http://" + window.location.hostname;
+const API_URL = "https://" + window.location.hostname;
 
 addFunc();
 
