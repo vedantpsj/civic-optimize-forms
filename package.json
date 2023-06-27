@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "node-schedule": "^2.1.1",
+    "request": "^2.88.2"
+  },
+  "name": "automate-hcms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://vedantpsj@github.com/vedantpsj/civic-optimize-forms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vedantpsj/civic-optimize-forms/issues"
+  },
+  "homepage": "https://github.com/vedantpsj/civic-optimize-forms#readme",
+  "description": ""
+}
