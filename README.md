@@ -11,7 +11,7 @@ Clone this repo and run command `npm install` to ensure all dependencies are add
 ### Web Service Technologies
 
 - Node.js: Server Side Code
-- Request Module (depreciated looking to move to Axios instead)
+- Axios
 - node-schedule Module
 
 ### JSON file on server
