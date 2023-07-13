@@ -6,8 +6,8 @@ const { updateHotels } = require("./src/yelp/hotel");
 const { updateRestaurants } = require("./src/yelp/restaurants");
 const { updateNpuEvents } = require("./src/nowplayingutah/npuEvents");
 
-// update hotels at UTC : 00:00:00 - every day
-const job1 = schedule.scheduleJob("0 0 * * *", async function () {
+// update hotels at UTC : 00:00:00 - every month on day 1
+const job1 = schedule.scheduleJob("0 0 1 * *", async function () {
   try {
     let tokens = JSON.parse(fs.readFileSync("./tokens.json", "utf8"));
     await updateHotels(tokens.hcmsToken, tokens.yelpToken);
@@ -16,8 +16,8 @@ const job1 = schedule.scheduleJob("0 0 * * *", async function () {
   }
 });
 
-// update restaurants at UTC : 00:05:00 - every day
-const job2 = schedule.scheduleJob("5 0 * * *", async function () {
+// update restaurants at UTC : 00:00:10 - every month on day 1
+const job2 = schedule.scheduleJob("10 0 1 * *", async function () {
   try {
     let tokens = JSON.parse(fs.readFileSync("./tokens.json", "utf8"));
     await updateRestaurants(tokens.hcmsToken, tokens.yelpToken);
