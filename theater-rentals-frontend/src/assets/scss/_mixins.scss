@@ -1,0 +1,10 @@
+@mixin max-screen($screenSize) {
+    @media only screen and (max-width: $screenSize) {
+        @content;
+    }
+}
+@mixin rounded($size) {
+    width: $size;
+    height: $size;
+    object-fit: cover;
+}

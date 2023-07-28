@@ -1,0 +1,12 @@
+.btn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  height: 40px;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+}
+.btn.primary {
+  background-color: #c017a2;
+  color: #fff;
+}/*# sourceMappingURL=button.css.map */

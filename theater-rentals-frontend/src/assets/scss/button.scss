@@ -1,0 +1,18 @@
+@import '../scss/variables.scss';
+.button{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    height: 40px;
+    font-size: 16px;
+    font-family: $font-family-base;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    appearance: none;
+    user-select: none;
+    &.primary{
+        background-color: $color-primary;
+        color: $color-white;
+    }
+}

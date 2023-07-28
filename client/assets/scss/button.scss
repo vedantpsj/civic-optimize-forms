@@ -1,0 +1,13 @@
+@import '../scss/variables.scss';
+.btn{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    height: 40px;
+    font-size: 16px;
+    font-family: $font-family-base;
+    &.primary{
+        background-color: $color-primary;
+        color: $color-white;
+    }
+}
