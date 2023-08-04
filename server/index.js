@@ -136,6 +136,7 @@ app.post("/manage-inventory", jsonParser, async (req, res) => {
         rent_for_2_weeks: req.body.cost,
         quantity: req.body.quantity,
         description: req.body.description,
+        image,
       };
       content = [...content, obj];
       fs.writeFileSync("assets/inventory.json", JSON.stringify(content));
@@ -153,6 +154,7 @@ app.post("/manage-inventory", jsonParser, async (req, res) => {
         el.rent_for_2_weeks = req.body.cost;
         el.quantity = req.body.quantity;
         el.description = req.body.description;
+        el.image = req.body.image;
       }
       fs.writeFileSync("assets/inventory.json", JSON.stringify(content));
       res.send(new response());
@@ -185,6 +187,7 @@ async function createNewHCMSInventory({
   quantity,
   category,
   cost,
+  image,
 }) {
   try {
     let data = JSON.stringify({
@@ -193,7 +196,7 @@ async function createNewHCMSInventory({
           iv: item_name,
         },
         "item-image": {
-          iv: ["6302d479-59a6-41a9-ad47-4f4db7a4d54f"],
+          iv: [image],
         },
         "item-description": {
           iv: description,
@@ -251,6 +254,7 @@ async function updateNewHcmsInventory({
   quantity,
   category,
   cost,
+  image,
 }) {
   try {
     let data = JSON.stringify({
@@ -259,7 +263,7 @@ async function updateNewHcmsInventory({
           iv: item_name,
         },
         "item-image": {
-          iv: ["6302d479-59a6-41a9-ad47-4f4db7a4d54f"],
+          iv: [image],
         },
         "item-description": {
           iv: description,
