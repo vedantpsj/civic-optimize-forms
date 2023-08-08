@@ -6,7 +6,17 @@
     "category": "prop inventory",
     "rent_for_2_weeks": "100",
     "quantity": "1",
-    "description": "Description here",
-    "image": ""
+    "description": "Description here edited",
+    "image": "6af5540c-15f8-4901-817b-51ce437925c4"
+  },
+  {
+    "id": "2898aa19-c571-44c9-b1c4-a7ea92e35abf",
+    "show_title": "Beauty",
+    "item": "Beast",
+    "category": "costume inventory",
+    "rent_for_2_weeks": "123",
+    "quantity": "123123",
+    "description": "Description here edited",
+    "image": "1eaa0b6c-8d80-4bd4-b78b-a04a474b54f0"
   }
 ]

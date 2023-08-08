@@ -4,6 +4,7 @@ const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 export enum API_URL {
   MANAGE_INVENTORY = "manage-inventory",
+  TOKENS = "auth",
   GET_SHOW_TITLES = "get-show-titles",
   GET_TITLES = "get-titles",
   GET_DETAILS = "get-details",
@@ -15,6 +16,7 @@ export enum API_URL {
 export interface IDataObject {
   url: string;
   data?: object;
+  headers?: object;
 }
 const UseApiService = () => {
   return {

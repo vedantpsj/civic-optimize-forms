@@ -89,7 +89,6 @@ function App() {
   }, [type]);
 
   useEffect(() => {
-    console.log(showTitleSubscription[0]);
     if (type === "0") {
     } else {
       getTitles(showTitleSubscription[0]);
@@ -143,9 +142,10 @@ function App() {
   }
   async function getImage(id: string) {
     try {
+      const { hcmsToken } = await getTokens();
       const url = `${API_URL.GET_IMAGE}/${id}`;
       const headers = {
-        Authorization: process.env.REACT_APP_TOKEN,
+        Authorization: "Bearer " + hcmsToken,
       };
       const res: any = await UseApiService().getFile(url, headers);
       const src = res.data._links.content.href;
@@ -198,15 +198,17 @@ function App() {
 
   async function uploadImage() {
     try {
+      const { hcmsToken = "", permissionSet = "" } = await getTokens();
+
       const headers = {
-        Authorization: process.env.REACT_APP_TOKEN,
+        Authorization: "Bearer " + hcmsToken,
         "Content-Type": "multipart/form-data",
       };
       if (image) {
         const res: any = await UseApiService().uploadFile(
           image,
           headers,
-          process.env.REACT_APP_PERMISSION_SET || ""
+          permissionSet
         );
         return res.data.id;
       }
@@ -257,6 +259,17 @@ function App() {
     if (imageRef?.current?.value) {
       imageRef.current.value = null;
     }
+  }
+
+  async function getTokens() {
+    const obj = {
+      url: API_URL.TOKENS,
+      data: {
+        auth: process.env.REACT_APP_AUTH,
+      },
+    };
+    const res = await UseApiService().get(obj);
+    return res.data;
   }
 
   return (

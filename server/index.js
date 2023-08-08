@@ -3,6 +3,8 @@ const fs = require("fs");
 var bodyParser = require("body-parser");
 var jsonParser = bodyParser.json();
 const axios = require("axios");
+const schedule = require("node-schedule");
+const { updateHcmsToken } = require("./updateHcmsTokens");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -40,6 +42,14 @@ app.get("/", async (req, res) => {
   return res.send(inventory);
 });
 
+app.get("/auth", async (req, res) => {
+  if (req.query?.auth === process.env.AUTH) {
+    let tokens = JSON.parse(fs.readFileSync("./assets/tokens.json", "utf8"));
+    return res.send(tokens);
+  }
+  return res.status(400).send("Unauthorized");
+});
+
 app.get("/get-show-titles", async (req, res) => {
   try {
     let inventory = JSON.parse(
@@ -49,7 +59,7 @@ app.get("/get-show-titles", async (req, res) => {
     showTitles = Array.from(new Set([...showTitles]));
     return res.send(showTitles);
   } catch (error) {
-    return res.send(error.message).status(400);
+    return res.status(400).send(error.message);
   }
 });
 
@@ -66,7 +76,7 @@ app.get("/get-titles", async (req, res) => {
     items = items.map((item) => item.item);
     res.send(items);
   } catch (error) {
-    return res.send(error.message).status(400);
+    return res.status(400).send(error.message);
   }
 });
 
@@ -84,7 +94,7 @@ app.get("/get-details", async (req, res) => {
     );
     return res.send(itemInJSon);
   } catch (error) {
-    return res.send(error.message).status(400);
+    return res.status(400).send(error.message);
   }
 });
 
@@ -115,7 +125,7 @@ app.post("/validate", jsonParser, async (req, res) => {
 
     return res.send(new response());
   } catch (error) {
-    return res.send(error.message).status(400);
+    return res.status(400).send(error.message);
   }
 });
 
@@ -136,7 +146,7 @@ app.post("/manage-inventory", jsonParser, async (req, res) => {
         rent_for_2_weeks: req.body.cost,
         quantity: req.body.quantity,
         description: req.body.description,
-        image,
+        image: req.body.image,
       };
       content = [...content, obj];
       fs.writeFileSync("assets/inventory.json", JSON.stringify(content));
@@ -176,7 +186,7 @@ app.post("/manage-inventory", jsonParser, async (req, res) => {
       res.send(new response());
     }
   } catch (error) {
-    return res.send(error.message).status(400);
+    return res.status(400).send(error.message);
   }
 });
 
@@ -228,13 +238,14 @@ async function createNewHCMSInventory({
       },
     });
 
+    let tokens = JSON.parse(fs.readFileSync("./assets/tokens.json", "utf8"));
     let config = {
       method: "post",
       maxBodyLength: Infinity,
       url: "https://content.civicplus.com/api/content/ut-sandycity/inventory-item/",
       headers: {
         "Content-Type": "application/json",
-        Authorization: process.env.TOKEN,
+        Authorization: "Bearer " + tokens.hcmsToken,
       },
       data: data,
     };
@@ -256,80 +267,86 @@ async function updateNewHcmsInventory({
   cost,
   image,
 }) {
-  try {
-    let data = JSON.stringify({
-      data: {
-        "item-name": {
-          iv: item_name,
-        },
-        "item-image": {
-          iv: [image],
-        },
-        "item-description": {
-          iv: description,
-        },
-        "item-quantity": {
-          iv: +quantity,
-        },
-        "item-cost": {
-          iv: +cost,
-        },
-        availability: {
-          iv: true,
-        },
+  let data = JSON.stringify({
+    data: {
+      "item-name": {
+        iv: item_name,
       },
-      tags: [category, show_title],
-      categories: [
-        {
-          id: "c5369245-a81e-4e90-ab2d-1c7ba0a9ebea",
-          name: "Community Arts",
-        },
-        {
-          id: "a9172c2b-7f1a-4bbf-9274-e7d4ea0402c3",
-          name: "Theater Rentals",
-        },
-      ],
-      permissionSet: {
-        id: "73a1c81f-ee5c-460f-89af-9f95383dc74a",
-        name: "HCMS",
+      "item-image": {
+        iv: [image],
       },
-    });
+      "item-description": {
+        iv: description,
+      },
+      "item-quantity": {
+        iv: +quantity,
+      },
+      "item-cost": {
+        iv: +cost,
+      },
+      availability: {
+        iv: true,
+      },
+    },
+    tags: [category, show_title],
+    categories: [
+      {
+        id: "c5369245-a81e-4e90-ab2d-1c7ba0a9ebea",
+        name: "Community Arts",
+      },
+      {
+        id: "a9172c2b-7f1a-4bbf-9274-e7d4ea0402c3",
+        name: "Theater Rentals",
+      },
+    ],
+    permissionSet: {
+      id: "73a1c81f-ee5c-460f-89af-9f95383dc74a",
+      name: "HCMS",
+    },
+  });
 
-    let config = {
-      method: "put",
-      maxBodyLength: Infinity,
-      url: `https://content.civicplus.com/api/content/ut-sandycity/inventory-item/${id}`,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: process.env.TOKEN,
-      },
-      data: data,
-    };
+  let tokens = JSON.parse(fs.readFileSync("./assets/tokens.json", "utf8"));
+  let config = {
+    method: "put",
+    maxBodyLength: Infinity,
+    url: `https://content.civicplus.com/api/content/ut-sandycity/inventory-item/${id}`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + tokens.hcmsToken,
+    },
+    data: data,
+  };
 
-    const res = await axios.request(config);
-    return res.data.id;
-  } catch (error) {
-    console.log(error);
-  }
+  const res = await axios.request(config);
+  return res.data.id;
 }
 
 async function deleteInventory({ id }) {
-  try {
-    let config = {
-      method: "delete",
-      maxBodyLength: Infinity,
-      url: `https://content.civicplus.com/api/content/ut-sandycity/inventory-item/${id}`,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: process.env.TOKEN,
-      },
-    };
-    const res = await axios.request(config);
-  } catch (error) {
-    console.log(error);
-  }
+  let tokens = JSON.parse(fs.readFileSync("./assets/tokens.json", "utf8"));
+  let config = {
+    method: "delete",
+    maxBodyLength: Infinity,
+    url: `https://content.civicplus.com/api/content/ut-sandycity/inventory-item/${id}`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + tokens.hcmsToken,
+    },
+  };
+  return axios.request(config);
 }
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
+});
+
+const job4 = schedule.scheduleJob("* * * * *", async function () {
+  let tokens = JSON.parse(fs.readFileSync("./assets/tokens.json", "utf8"));
+  try {
+    let body = await updateHcmsToken(tokens.form);
+    console.log("tokens updated");
+    tokens.hcmsToken = body.access_token;
+    fs.writeFileSync("assets/tokens.json", JSON.stringify(tokens));
+  } catch (error) {
+    console.log(error);
+  }
 });
