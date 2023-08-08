@@ -8,7 +8,8 @@ export enum API_URL {
   GET_TITLES = "get-titles",
   GET_DETAILS = "get-details",
   VALIDATE = "validate",
-  UPLOAD = "https://content.civicplus.com/api/apps/ut-sandycity/assets/",
+  UPLOAD = "https://content.civicplus.com/api/apps/ut-sandycity/assets?publish=true",
+  GET_IMAGE = "https://content.civicplus.com/api/apps/ut-sandycity/assets",
 }
 
 export interface IDataObject {
@@ -29,19 +30,15 @@ const UseApiService = () => {
         },
       });
     },
-    async uploadFile(file: File, url: string) {
-      const payload = {
-        url: url,
-        data: file,
-        headers: {
-          "Content-Type": file.type,
-          Authorization: process.env.REACT_APP_HCMS_TOKEN,
-        },
-      };
-      return axios.post(payload.url, payload.data, {
-        headers: {
-          ...payload.headers,
-        },
+    async uploadFile(file: File, headers: any, permissionSet: string) {
+      var data = new FormData();
+      data.append("file", file);
+      data.append("permissionSet", permissionSet);
+      return axios.post(API_URL.UPLOAD, data, { headers: headers });
+    },
+    async getFile(url: string, headers: any) {
+      return axios.get(url, {
+        headers: headers,
       });
     },
   };

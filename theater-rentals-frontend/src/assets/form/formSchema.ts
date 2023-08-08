@@ -8,5 +8,6 @@ export const theaterRentalSchema = yup.object().shape({
   cost: yup.string().required(),
   quantity: yup.string().required(),
   description: yup.string().required(),
-  image: yup.string().optional(),
+  image: yup.string().required(),
+  imageId: yup.string().optional()
 });

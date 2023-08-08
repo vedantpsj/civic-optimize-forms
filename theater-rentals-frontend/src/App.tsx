@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import AddWhiteIcon from "../src/assets/images/add-white.svg";
 import AddIcon from "../src/assets/images/add.svg";
@@ -20,6 +20,10 @@ function App() {
   const [loading, setLoading] = useState<boolean>(false);
   const [toast, setToast] = useState("");
   const [error, setError] = useState("");
+
+  const [image, setImage] = useState<File | null>(null);
+  const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>("");
+  const imageRef = useRef<any>(null);
 
   const {
     watch,
@@ -71,6 +75,7 @@ function App() {
     resetField("cost");
     resetField("description");
     resetField("quantity");
+    resetFileState();
   }
   useEffect(() => {
     setType(typeSubscription[0]);
@@ -136,7 +141,21 @@ function App() {
       console.log(error);
     }
   }
-
+  async function getImage(id: string) {
+    try {
+      const url = `${API_URL.GET_IMAGE}/${id}`;
+      const headers = {
+        Authorization: process.env.REACT_APP_TOKEN,
+      };
+      const res: any = await UseApiService().getFile(url, headers);
+      const src = res.data._links.content.href;
+      setImageSrc(`https://content.civicplus.com${src}`);
+      const imageName = src.substring(src.lastIndexOf("/") + 1);
+      setValue("image", imageName);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   async function getDetails(show_title = "", item = "") {
     try {
       const res = await UseApiService().get({
@@ -150,19 +169,50 @@ function App() {
       setValue("cost", res.data.rent_for_2_weeks);
       setValue("quantity", res.data.quantity);
       setValue("description", res.data.description);
+      if (res.data.image) {
+        getImage(res.data.image);
+        setValue("imageId", res.data.image);
+      }
     } catch (error) {
       console.log(error);
     }
   }
 
   async function onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    setImage(file);
+    getImageBase64(file);
+    setValue("image", file.name);
+  }
+
+  function getImageBase64(file: File) {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      setImageSrc(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.log("Error: ", error);
+    };
+  }
+
+  async function uploadImage() {
     try {
-      // const file: File = event.target.files[0];
-      // console.log(file);
-      // const fileUrl = API_URL.UPLOAD + uuidv4() + "?publish=true";
-      // const res = await UseApiService().uploadFile(file, fileUrl);
-      // console.log(res);
-    } catch (error) {}
+      const headers = {
+        Authorization: process.env.REACT_APP_TOKEN,
+        "Content-Type": "multipart/form-data",
+      };
+      if (image) {
+        const res: any = await UseApiService().uploadFile(
+          image,
+          headers,
+          process.env.REACT_APP_PERMISSION_SET || ""
+        );
+        return res.data.id;
+      }
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
   }
 
   async function validate(data: any) {
@@ -182,18 +232,30 @@ function App() {
 
   async function updateInventory(data: any) {
     try {
+      const imageId = image ? await uploadImage() : data.imageId;
+      delete data["imageId"];
       const obj = {
         url: API_URL.MANAGE_INVENTORY,
-        data,
+        data: { ...data, image: imageId },
       };
       const res = await UseApiService().post(obj);
       reset();
+      setImage(null);
+      setImageSrc("");
       setLoading(false);
       setToast("Inventory updated successfully!");
     } catch (err: any) {
       setError(err?.response?.data?.message ?? err.message);
       setLoading(false);
       console.log(error);
+    }
+  }
+
+  function resetFileState() {
+    setImageSrc("");
+    setImage(null);
+    if (imageRef?.current?.value) {
+      imageRef.current.value = null;
     }
   }
 
@@ -360,9 +422,20 @@ function App() {
                 errors={errors}
                 register={register}
               />
-
-              {/* <input type="file" onChange={onFileSelected} /> */}
-
+              {imageSrc && (
+                <>
+                  <span onClick={resetFileState}>X</span>
+                  <img src={imageSrc.toString()} alt="" />
+                </>
+              )}
+              {!imageSrc && (
+                <input
+                  type="file"
+                  onChange={onFileSelected}
+                  accept="image/*"
+                  ref={imageRef}
+                />
+              )}
               <div className="theaterData__form-button d-flex mt-5">
                 <div
                   className={`theaterData__message alert ${
