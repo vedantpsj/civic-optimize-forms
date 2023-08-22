@@ -339,7 +339,7 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-const job4 = schedule.scheduleJob("* * * * *", async function () {
+const job4 = schedule.scheduleJob("0 0 */5 * * ", async function () {
   let tokens = JSON.parse(fs.readFileSync("./assets/tokens.json", "utf8"));
   try {
     let body = await updateHcmsToken(tokens.form);
