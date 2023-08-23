@@ -91,14 +91,27 @@ function App() {
   useEffect(() => {
     if (type === "0") {
     } else {
-      getTitles(showTitleSubscription[0]);
+      if (showTitleSubscription) {
+        getTitles(showTitleSubscription[0]);
+      } else {
+        resetForm();
+      }
     }
   }, [showTitleSubscription[0]]);
 
   useEffect(() => {
     if (type === "0") {
     } else {
-      getDetails(showTitleSubscription[0], itemNameSubscription[0]);
+      if (itemNameSubscription[0]) {
+        getDetails(showTitleSubscription[0], itemNameSubscription[0]);
+      } else {
+        resetField("item_name");
+        resetField("category");
+        resetField("cost");
+        resetField("description");
+        resetField("quantity");
+        resetFileState();
+      }
     }
   }, [itemNameSubscription[0]]);
 
@@ -136,6 +149,12 @@ function App() {
         },
       });
       setItemNames(res.data);
+      resetField("item_name");
+      resetField("category");
+      resetField("cost");
+      resetField("description");
+      resetField("quantity");
+      resetFileState();
     } catch (error) {
       console.log(error);
     }
