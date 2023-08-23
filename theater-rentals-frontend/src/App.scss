@@ -161,6 +161,26 @@
         border-color: $color-primary-light;
       }
     }
+    &-imgWrap {
+      width: max-content;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid rgba($color-black, 0.2);
+      img {
+        max-height: 400px;
+      }
+      button {
+        width: 20px;
+        height: 20px;
+        border: 1px solid rgba($color-black, 0.2);
+        background-color: $color-white;
+        right: -8px;
+        top: -8px;
+        span {
+          line-height: 1;
+        }
+      }
+    }
   }
   &__message {
     max-width: 300px;
@@ -169,6 +189,5 @@
     z-index: 1;
     border: 0px;
     background: transparent;
-    
   }
 }

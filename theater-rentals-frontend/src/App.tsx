@@ -436,10 +436,23 @@ function App() {
                 register={register}
               />
               {imageSrc && (
-                <>
-                  <span onClick={resetFileState}>X</span>
-                  <img src={imageSrc.toString()} alt="" />
-                </>
+                <div className="theaterData__form-imgWrap position-relative rounded">
+                  <button
+                    type="button"
+                    className="close w-20 h-20 position-absolute rounded-circle"
+                    aria-label="Close"
+                    onClick={resetFileState}
+                  >
+                    <span className="d-block h-100 " aria-hidden="true">
+                      &times;
+                    </span>
+                  </button>
+                  <img
+                    className="w-100 h-100 object-fit-cover"
+                    src={imageSrc.toString()}
+                    alt=""
+                  />
+                </div>
               )}
               {!imageSrc && (
                 <input
