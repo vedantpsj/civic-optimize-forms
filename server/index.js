@@ -10,7 +10,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
-const port = 3001;
+const port = 3000;
 
 const path = require("path");
 const cors = require("cors");
@@ -242,7 +242,7 @@ async function createNewHCMSInventory({
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "https://content.civicplus.com/api/content/ut-sandycity/inventory-item/",
+      url: "https://content.civicplus.com/api/content/ut-sandycity/inventory-item?publish=true",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + tokens.hcmsToken,
