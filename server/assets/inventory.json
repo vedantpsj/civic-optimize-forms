@@ -1,22 +1,32 @@
 [
   {
-    "id": "1be9a9c4-5981-42fc-a827-de2163de1633",
+    "id": "22965609-b5e3-40f0-83b4-2ca2004e4e4a",
     "show_title": "Beauty and the Beast Jr",
-    "item": "Belle's Cottage",
+    "item": "Gaston's Gun",
     "category": "prop inventory",
-    "rent_for_2_weeks": "100",
+    "rent_for_2_weeks": "45",
     "quantity": "1",
-    "description": "Description here edited",
-    "image": "6af5540c-15f8-4901-817b-51ce437925c4"
+    "description": "Gaston's Gun used in several of the Beauty and the Beast scenes",
+    "image": "6302d479-59a6-41a9-ad47-4f4db7a4d54f"
   },
   {
-    "id": "2898aa19-c571-44c9-b1c4-a7ea92e35abf",
-    "show_title": "Beauty",
-    "item": "Beast",
+    "id": "c3cfb25b-2b69-4cba-8d95-2bb7df6c00a1",
+    "show_title": "Beauty and the Beast Jr",
+    "item": "Beast Costume",
     "category": "costume inventory",
-    "rent_for_2_weeks": "123",
-    "quantity": "123123",
-    "description": "Description here edited",
-    "image": "1eaa0b6c-8d80-4bd4-b78b-a04a474b54f0"
+    "rent_for_2_weeks": "50",
+    "quantity": "1",
+    "description": "Additional costumes listed in our Beauty and the Beast full show inventory.",
+    "image": "f412eb29-5d88-4e75-a726-6bcdb8505542"
+  },
+  {
+    "id": "6b986c2d-f958-48e1-b2e7-eebb6bd5f817",
+    "show_title": "Beauty and the Beast Jr",
+    "item": "Castle",
+    "category": "set inventory",
+    "rent_for_2_weeks": "750",
+    "quantity": "1",
+    "description": "This set is no longer available. However, castle options do exist.  Please enquire.",
+    "image": "07aefd85-8c11-4c64-9e9b-eb50f4756674"
   }
 ]
