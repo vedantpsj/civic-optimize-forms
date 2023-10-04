@@ -27,19 +27,32 @@ exports.updateNpuEvents = async function (hcmsToken) {
     ) {
       console.log("Sandy", json.data[i].venueZip);
 
-      let cardHTML = `<!-- START CARD --> <div class='npu-single-card sandy-events'><div class='npu-event-content-wrapper'><a href='${json.data[i].eventTicketUrl}' target='_blank'><img class='npu-event-image' src='${json.data[i].eventImage}' alt='Now Playing Utah Event' ${json.data[i].eventName}></a><div class='npu-event-description'><div class='npu-event-date'>${json.data[i].eventDatesTimes[0].date} | ${json.data[i].eventDatesTimes[0].time}</div><div><h2 class='npu-event-title'>${json.data[i].eventName}</h2><button class='cardAccordion'>EVENT DETAILS</button><div class='cardPanel'><ul class='npu-event-details'><li>Status: ${json.data[i].eventSummary}</li><li>Venue: ${json.data[i].venueName}</li><li><a href='https://maps.google.com/?q=${json.data[i].venueAddress1} ${json.data[i].venueCity}, UT ${json.data[i].venueZip}&t=m' target='_blank'>${json.data[i].venueAddress1} ${json.data[i].venueCity}, UT ${json.data[i].venueZip}</a></li><li>${json.data[i].eventTicketInfo}</li></ul></div><a id='npu-ticket-url' href='${json.data[i].eventUrl}'>Get Tickets</a></div></div></div></div> <!-- END CARD -->`;
+      let cardHTML = `<!-- START CARD --> <div class='npu-single-card sandy-events'><div class='npu-event-content-wrapper'><a href='${json.data[i].eventTicketUrl}' target='_blank'><img class='npu-event-image' src='${json.data[i].eventImage}' alt='Now Playing Utah Event' ${json.data[i].eventName}></a><div class='npu-event-description'><div class='npu-event-date'>${json.data[i].eventDatesTimes[0].date} | ${json.data[i].eventDatesTimes[0].time}</div><div><h2 class='npu-event-title'>${json.data[i].eventName}</h2><button class='cardAccordion' onclick="
+this.classList.toggle('openUp');
+    let cardPanel = this.nextElementSibling;
+    
+    cardPanel.style.height = 
+    cardPanel.style.height == '300px' ?'0px' :  '300px';
+ 
+    ">EVENT DETAILS</button><div class='cardPanel'><ul class='npu-event-details'><li>Status: ${json.data[i].eventSummary}</li><li>Venue: ${json.data[i].venueName}</li><li><a href='https://maps.google.com/?q=${json.data[i].venueAddress1} ${json.data[i].venueCity}, UT ${json.data[i].venueZip}&t=m' target='_blank'>${json.data[i].venueAddress1} ${json.data[i].venueCity}, UT ${json.data[i].venueZip}</a></li><li>${json.data[i].eventTicketInfo}</li></ul></div><a id='npu-ticket-url' href='${json.data[i].eventUrl}'>Get Tickets</a></div></div></div></div> <!-- END CARD -->`;
       html = html + cardHTML;
     } else {
       console.log("Salt Lake", json.data[i].venueZip);
 
-      let cardHTML = `<!-- START CARD --><div class='npu-single-card all-events'><div class='npu-event-content-wrapper'><a href='${json.data[i].eventTicketUrl}' target='_blank'><img class='npu-event-image' src='${json.data[i].eventImage}' alt='Now Playing Utah Event' ${json.data[i].eventName}></a><div class='npu-event-description'><div class='npu-event-date'>${json.data[i].eventDatesTimes[0].date} | ${json.data[i].eventDatesTimes[0].time}</div><div><h2 class='npu-event-title'>${json.data[i].eventName}</h2><button class='cardAccordion'>EVENT DETAILS</button><div class='cardPanel'><ul class='npu-event-details'><li>Status: ${json.data[i].eventSummary}</li><li>Venue: ${json.data[i].venueName}</li><li><a href='https://maps.google.com/?q=${json.data[i].venueAddress1} ${json.data[i].venueCity}, UT ${json.data[i].venueZip}&t=m' target='_blank'>${json.data[i].venueAddress1} ${json.data[i].venueCity}, UT ${json.data[i].venueZip}</a></li><li>${json.data[i].eventTicketInfo}</li></ul></div><a id='npu-ticket-url' href='${json.data[i].eventUrl}'>Get Tickets</a></div></div></div></div><!-- END CARD -->`;
+      let cardHTML = `<!-- START CARD --><div class='npu-single-card all-events'><div class='npu-event-content-wrapper'><a href='${json.data[i].eventTicketUrl}' target='_blank'><img class='npu-event-image' src='${json.data[i].eventImage}' alt='Now Playing Utah Event' ${json.data[i].eventName}></a><div class='npu-event-description'><div class='npu-event-date'>${json.data[i].eventDatesTimes[0].date} | ${json.data[i].eventDatesTimes[0].time}</div><div><h2 class='npu-event-title'>${json.data[i].eventName}</h2><button class='cardAccordion' onclick="
+      this.classList.toggle('openUp');
+    let cardPanel = this.nextElementSibling;
+    cardPanel.style.height = 
+    cardPanel.style.height == '300px' ?'0px' :  '300px';
+ 
+    ">EVENT DETAILS</button><div class='cardPanel'><ul class='npu-event-details'><li>Status: ${json.data[i].eventSummary}</li><li>Venue: ${json.data[i].venueName}</li><li><a href='https://maps.google.com/?q=${json.data[i].venueAddress1} ${json.data[i].venueCity}, UT ${json.data[i].venueZip}&t=m' target='_blank'>${json.data[i].venueAddress1} ${json.data[i].venueCity}, UT ${json.data[i].venueZip}</a></li><li>${json.data[i].eventTicketInfo}</li></ul></div><a id='npu-ticket-url' href='${json.data[i].eventUrl}'>Get Tickets</a></div></div></div></div><!-- END CARD -->`;
       html = html + cardHTML;
     }
   }
 
   console.log("CARDS PREPPED WITH ZIPS ", html);
 
-  html = html + `</div>` + accordionScript;
+  html = html + `</div>`;
 
   console.log("HTML CARD BLOCKS****", html);
   await updateHCMS(hcmsToken, html);
@@ -47,25 +60,29 @@ exports.updateNpuEvents = async function (hcmsToken) {
 
 async function updateHCMS(hcmsToken, html) {
   console.log("****************UPDATING HCMS CALLED!!! ");
-  const res = await axios.put("https://content.civicplus.com/api/content/ut-sandycity/html/04f2b6c7-7aad-43d5-aa66-85d50e037499", {
-    data: {
-      "html-title": {
-        en: "See Local Events From Now Playing Utah",
+  const res = await axios.put(
+    "https://content.civicplus.com/api/content/ut-sandycity/html/04f2b6c7-7aad-43d5-aa66-85d50e037499",
+    {
+      data: {
+        "html-title": {
+          en: "See Local Events From Now Playing Utah",
+        },
+        html: {
+          en: html,
+        },
       },
-      html: {
-        en: html,
+      categories: [],
+      tags: ["teako", "Postman-Test"],
+      permissionSet: {
+        id: "898af621-7b19-41b9-a7fb-e35e0fe222e2",
       },
     },
-    categories: [],
-    tags: ["teako", "Postman-Test"],
-    permissionSet: {
-      id: "898af621-7b19-41b9-a7fb-e35e0fe222e2",
-    },
-  }, {
-    headers: {
-      'Authorization': `Bearer ${hcmsToken}`
+    {
+      headers: {
+        Authorization: `Bearer ${hcmsToken}`,
+      },
     }
-  })
+  );
   console.log("****************UPDATING HCMS Completed!!! ");
   return res;
 }

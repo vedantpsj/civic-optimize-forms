@@ -25,7 +25,12 @@ exports.updateRestaurants = async function (hcmsToken, yelpToken) {
         res.data.businesses[i].name
       }</h2><p>Top Category: ${
         res.data.businesses[i].categories[0].title
-      }</p><button class="cardAccordion">BUSINESS INFO</button><div class="cardPanel"><ul class="yelp-business-details"><li>Price: ${
+      }</p><button class="cardAccordion" onclick="
+      this.classList.toggle('openUp');
+      let cardPanel = this.nextElementSibling;
+      cardPanel.style.height = 
+      cardPanel.style.height == '300px' ?'0px' :  '300px';
+      ">BUSINESS INFO</button><div class="cardPanel"><ul class="yelp-business-details"><li>Price: ${
         res.data.businesses[i].price
       }</li><li>Address & Map: <a href="https://maps.google.com/?q=${
         res.data.businesses[i].location.display_address[0] +
@@ -47,7 +52,7 @@ exports.updateRestaurants = async function (hcmsToken, yelpToken) {
         html = html + cardHTML;
   }
 
-      html = html + `</div>` + accordionScript;
+      html = html + `</div>`;
 
       console.log("HTML CARD BLOCKS****");
       await updateHCMS(hcmsToken, html);
