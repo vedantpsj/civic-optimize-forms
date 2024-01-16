@@ -35,14 +35,14 @@ class response {
   }
 }
 
-app.get("/", async (req, res) => {
+app.get("/api", async (req, res) => {
   let inventory = JSON.parse(
     fs.readFileSync("./assets/inventory.json", "utf8")
   );
   return res.send(inventory);
 });
 
-app.get("/auth", async (req, res) => {
+app.get("/api/auth", async (req, res) => {
   if (req.query?.auth === process.env.AUTH) {
     let tokens = JSON.parse(fs.readFileSync("./assets/tokens.json", "utf8"));
     return res.send(tokens);
@@ -50,7 +50,7 @@ app.get("/auth", async (req, res) => {
   return res.status(400).send("Unauthorized");
 });
 
-app.get("/get-show-titles", async (req, res) => {
+app.get("/api/get-show-titles", async (req, res) => {
   try {
     let inventory = JSON.parse(
       fs.readFileSync("./assets/inventory.json", "utf8")
@@ -63,7 +63,7 @@ app.get("/get-show-titles", async (req, res) => {
   }
 });
 
-app.get("/get-titles", async (req, res) => {
+app.get("/api/get-titles", async (req, res) => {
   try {
     let inventory = JSON.parse(
       fs.readFileSync("./assets/inventory.json", "utf8")
@@ -80,7 +80,7 @@ app.get("/get-titles", async (req, res) => {
   }
 });
 
-app.get("/get-details", async (req, res) => {
+app.get("/api/get-details", async (req, res) => {
   try {
     let inventory = JSON.parse(
       fs.readFileSync("./assets/inventory.json", "utf8")
@@ -98,7 +98,7 @@ app.get("/get-details", async (req, res) => {
   }
 });
 
-app.post("/validate", jsonParser, async (req, res) => {
+app.post("/api/validate", jsonParser, async (req, res) => {
   try {
     let inventory = JSON.parse(
       fs.readFileSync("./assets/inventory.json", "utf8")
@@ -129,7 +129,7 @@ app.post("/validate", jsonParser, async (req, res) => {
   }
 });
 
-app.post("/manage-inventory", jsonParser, async (req, res) => {
+app.post("/api/manage-inventory", jsonParser, async (req, res) => {
   try {
     let inventory = JSON.parse(
       fs.readFileSync("./assets/inventory.json", "utf8")
