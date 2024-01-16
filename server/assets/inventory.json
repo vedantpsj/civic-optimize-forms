@@ -28,5 +28,15 @@
     "quantity": "1",
     "description": "This set is no longer available. However, castle options do exist.  Please enquire.",
     "image": "07aefd85-8c11-4c64-9e9b-eb50f4756674"
+  },
+  {
+    "id": "e3c60833-d196-4b79-b7a7-ce24b4c248e8",
+    "show_title": "Beauty and the Beast Jr",
+    "item": "Item",
+    "category": "prop inventory",
+    "rent_for_2_weeks": "1",
+    "quantity": "2",
+    "description": "213",
+    "image": "1587edc7-cd55-4b31-8951-51c07cc74aae"
   }
 ]

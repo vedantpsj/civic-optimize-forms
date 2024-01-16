@@ -186,6 +186,7 @@ app.post("/api/manage-inventory", jsonParser, async (req, res) => {
       res.send(new response());
     }
   } catch (error) {
+    console.log({ ...error });
     return res.status(400).send(error.message);
   }
 });
@@ -253,6 +254,7 @@ async function createNewHCMSInventory({
     const res = await axios.request(config);
     return res.data.id;
   } catch (error) {
+    console.log({ ...error });
     throw new Error(error);
   }
 }
