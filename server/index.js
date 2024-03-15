@@ -5,6 +5,7 @@ var jsonParser = bodyParser.json();
 const axios = require("axios");
 const schedule = require("node-schedule");
 const { updateHcmsToken } = require("./updateHcmsTokens");
+const { getCategories } = require("./getCategories");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -201,6 +202,12 @@ async function createNewHCMSInventory({
   image,
 }) {
   try {
+    let tokens = JSON.parse(fs.readFileSync("./assets/tokens.json", "utf8"));
+    const categories = await getCategories(
+      tokens.hcmsToken,
+      category,
+      show_title
+    );
     let data = JSON.stringify({
       data: {
         "item-name": {
@@ -223,23 +230,13 @@ async function createNewHCMSInventory({
         },
       },
       tags: [category, show_title],
-      categories: [
-        {
-          id: "c5369245-a81e-4e90-ab2d-1c7ba0a9ebea",
-          name: "Community Arts",
-        },
-        {
-          id: "a9172c2b-7f1a-4bbf-9274-e7d4ea0402c3",
-          name: "Theater Rentals",
-        },
-      ],
+      categories: categories,
       permissionSet: {
         id: "73a1c81f-ee5c-460f-89af-9f95383dc74a",
         name: "HCMS",
       },
     });
 
-    let tokens = JSON.parse(fs.readFileSync("./assets/tokens.json", "utf8"));
     let config = {
       method: "post",
       maxBodyLength: Infinity,
@@ -269,6 +266,12 @@ async function updateNewHcmsInventory({
   cost,
   image,
 }) {
+  let tokens = JSON.parse(fs.readFileSync("./assets/tokens.json", "utf8"));
+  const categories = await getCategories(
+    tokens.hcmsToken,
+    category,
+    show_title
+  );
   let data = JSON.stringify({
     data: {
       "item-name": {
@@ -291,23 +294,13 @@ async function updateNewHcmsInventory({
       },
     },
     tags: [category, show_title],
-    categories: [
-      {
-        id: "c5369245-a81e-4e90-ab2d-1c7ba0a9ebea",
-        name: "Community Arts",
-      },
-      {
-        id: "a9172c2b-7f1a-4bbf-9274-e7d4ea0402c3",
-        name: "Theater Rentals",
-      },
-    ],
+    categories: categories,
     permissionSet: {
       id: "73a1c81f-ee5c-460f-89af-9f95383dc74a",
       name: "HCMS",
     },
   });
 
-  let tokens = JSON.parse(fs.readFileSync("./assets/tokens.json", "utf8"));
   let config = {
     method: "put",
     maxBodyLength: Infinity,
