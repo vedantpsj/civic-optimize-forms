@@ -3,12 +3,11 @@ import axios from "axios";
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 export enum API_URL {
-  MANAGE_INVENTORY = "rentals/manage-inventory",
+  MANAGE_INVENTORY = "production/manage-inventory",
   TOKENS = "auth",
-  GET_SHOW_TITLES = "rentals/get-show-titles",
-  GET_TITLES = "rentals/get-titles",
-  GET_DETAILS = "rentals/get-details",
-  VALIDATE = "rentals/validate",
+  GET_SHOW_TITLES = "production/get-show-titles",
+  GET_DETAILS = "production/get-details",
+  VALIDATE = "production/validate",
   UPLOAD = "https://content.civicplus.com/api/apps/ut-sandycity/assets?publish=true",
   GET_IMAGE = "https://content.civicplus.com/api/apps/ut-sandycity/assets",
 }
