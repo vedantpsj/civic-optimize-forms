@@ -23,7 +23,7 @@ const Layout = () => {
               }
               to="/rentals"
             >
-              Theater Rental
+              Inventory Item
             </NavLink>
           </li>
         </ul>

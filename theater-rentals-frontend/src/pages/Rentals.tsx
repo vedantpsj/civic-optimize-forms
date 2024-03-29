@@ -83,9 +83,7 @@ function Rentals() {
 
   useEffect(() => {
     resetForm();
-    if (type === "1" || type === "2") {
-      getShowTitles();
-    }
+    getShowTitles();
   }, [type]);
 
   useEffect(() => {
@@ -331,20 +329,9 @@ function Rentals() {
         <div className="col-md-8">
           <div className="theaterData__form-content bg-white">
             <form id="add-form">
-              <h1>Theater Rental</h1>
+              <h1>Inventory Item</h1>
               <div className="mt-5">
-                {type === "0" ? (
-                  <Input
-                    required={true}
-                    label={"Show title"}
-                    type="text"
-                    extraClass="form-control"
-                    placeholder="Show title"
-                    name="show_title"
-                    errors={errors}
-                    register={register}
-                  />
-                ) : (
+                {
                   <div className="mb-3">
                     <label className="theaterData__form-formLabel mb-1">
                       Show title<span className="text-danger">*</span>
@@ -363,7 +350,7 @@ function Rentals() {
                       })}
                     </select>
                   </div>
-                )}
+                }
 
                 {type === "0" ? (
                   <Input
@@ -459,16 +446,18 @@ function Rentals() {
                 />
                 {imageSrc && (
                   <div className="theaterData__form-imgWrap position-relative rounded">
-                    <button
-                      type="button"
-                      className="close w-20 h-20 position-absolute rounded-circle"
-                      aria-label="Close"
-                      onClick={resetFileState}
-                    >
-                      <span className="d-block h-100 " aria-hidden="true">
-                        &times;
-                      </span>
-                    </button>
+                    {type !== "2" && (
+                      <button
+                        type="button"
+                        className="close w-20 h-20 position-absolute rounded-circle"
+                        aria-label="Close"
+                        onClick={resetFileState}
+                      >
+                        <span className="d-block h-100 " aria-hidden="true">
+                          &times;
+                        </span>
+                      </button>
+                    )}
                     <img
                       className="w-100 h-100 object-fit-cover"
                       src={imageSrc.toString()}
