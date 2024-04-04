@@ -31,7 +31,7 @@ router.get("/get-show-titles", async (req, res) => {
       fs.readFileSync("./assets/production.json", "utf8")
     );
     let showTitles = inventory.map((el) => el.show_title);
-    showTitles = Array.from(new Set([...showTitles]));
+    showTitles = Array.from(new Set([...showTitles])).sort();
     return res.send(showTitles);
   } catch (error) {
     return res.status(400).send(error.message);

@@ -37,7 +37,7 @@ router.get("/get-show-titles", async (req, res) => {
 
     let showTitles = inventory.map((el) => el.show_title);
     const productionTitles = production.map((el) => el.show_title);
-    showTitles = Array.from(new Set([...showTitles, ...productionTitles]));
+    showTitles = Array.from(new Set([...showTitles, ...productionTitles])).sort();
     return res.send(showTitles);
   } catch (error) {
     return res.status(400).send(error.message);
@@ -54,7 +54,7 @@ router.get("/get-titles", async (req, res) => {
       (inventoryItem) => inventoryItem.show_title === show_title
     );
 
-    items = items.map((item) => item.item);
+    items = items.map((item) => item.item).sort();
     res.send(items);
   } catch (error) {
     return res.status(400).send(error.message);
