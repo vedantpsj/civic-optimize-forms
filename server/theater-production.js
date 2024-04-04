@@ -165,7 +165,7 @@ async function createProductionItemOnHcms({
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "https://content.civicplus.com/api/content/ut-sandycity/costume-inventory",
+      url: "https://content.civicplus.com/api/content/ut-sandycity/costume-inventory?publish=true",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + tokens.hcmsToken,
