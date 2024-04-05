@@ -39,7 +39,7 @@ module.exports.post = async function (req, res) {
   let cost = 0;
   items.forEach((item) => {
     htmlString += `<div>${item.item} | ${item.category} Piece | Qty ${item.quantity}</div>`;
-    cost += +item.quantity * +item.rent_for_2_weeks;
+    cost += (+item.quantity || 0) * (+item.rent_for_2_weeks || 0);
   });
 
   htmlString += `<div>Total cost: $${cost}</div>`;
