@@ -339,20 +339,25 @@ function Rentals() {
         <div className="col-md-8">
           <div className="theaterData__form-content bg-white">
             <form id="add-form">
-              <h1>Inventory Item</h1>
-              <div className="mt-5">
-                {type === "0" && (
-                  <div className="mb-3">
-                    <label className="theaterData__form-formLabel mb-1">
-                      Allow multiple
-                    </label>
-                    <ToggleSwitch
-                      id="mulitple"
-                      checked={allowMultiple}
-                      onChange={setAllowMultiple}
-                    />
-                  </div>
-                )}
+              <div className="row justify-content-between">
+                <div className="col-xl-8 col-lg-7">
+                  <h1>Inventory Item</h1>
+                </div>
+                <div className="col-xl-4 col-lg-5 d-lg-flex mt-4 mt-lg-0 justify-content-end">
+                  {type === "0" && (
+                    <div className="theaterData__form-switch d-flex align-items-center">
+                      <label className="mr-2 d-block">Allow multiple</label>
+                      <ToggleSwitch
+                        id="mulitple"
+                        checked={allowMultiple}
+                        onChange={setAllowMultiple}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-lg-5 mt-3">
                 {
                   <div className="mb-3">
                     <label className="theaterData__form-formLabel mb-1">
@@ -373,56 +378,65 @@ function Rentals() {
                     </select>
                   </div>
                 }
-                <div className="mb-3">
-                  <label className="theaterData__form-formLabel mb-1">
-                    Item category<span className="text-danger">*</span>
-                  </label>
-                  <select
-                    disabled={
-                      (type === "1" && !itemNameSubscription[0]) || type === "2"
-                    }
-                    className="theaterData__form-formSelect form-select"
-                    {...register("category")}
-                  >
-                    <option value="">Choose category</option>
-                    <option value="costume inventory">Costume inventory</option>
-                    <option value="prop inventory">Prop inventory</option>
-                    <option value="set inventory">Set inventory</option>
-                  </select>
-                </div>
-
-                {type === "0" ? (
-                  <Input
-                    required={true}
-                    label={"Item name"}
-                    type="text"
-                    extraClass="form-control"
-                    placeholder="Item name"
-                    name="item_name"
-                    errors={errors}
-                    register={register}
-                  />
-                ) : (
+                <div
+                  className={type === "0" ? "" : "d-flex flex-column-reverse"}
+                >
                   <div className="mb-3">
                     <label className="theaterData__form-formLabel mb-1">
-                      Item name<span className="text-danger">*</span>
+                      Item category<span className="text-danger">*</span>
                     </label>
                     <select
+                      disabled={
+                        (type === "1" && !itemNameSubscription[0]) ||
+                        type === "2"
+                      }
                       className="theaterData__form-formSelect form-select"
-                      {...register("item_name")}
+                      {...register("category")}
                     >
-                      <option value="">Choose Item Name</option>
-
-                      {itemNames.map((el) => {
-                        return (
-                          <option value={el} key={el}>
-                            {el}
-                          </option>
-                        );
-                      })}
+                      <option value="">Choose category</option>
+                      <option value="costume inventory">
+                        Costume inventory
+                      </option>
+                      <option value="prop inventory">Prop inventory</option>
+                      <option value="set inventory">Set inventory</option>
                     </select>
                   </div>
-                )}
+
+                  {type === "0" ? (
+                    <div>
+                      <Input
+                        required={true}
+                        label={"Item name"}
+                        type="text"
+                        extraClass="form-control"
+                        placeholder="Item name"
+                        name="item_name"
+                        errors={errors}
+                        register={register}
+                      />
+                    </div>
+                  ) : (
+                    <div className="mb-3">
+                      <label className="theaterData__form-formLabel mb-1">
+                        Item name<span className="text-danger">*</span>
+                      </label>
+                      <select
+                        className="theaterData__form-formSelect form-select"
+                        {...register("item_name")}
+                      >
+                        <option value="">Choose Item Name</option>
+
+                        {itemNames.map((el) => {
+                          return (
+                            <option value={el} key={el}>
+                              {el}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                  )}
+                </div>
 
                 <Input
                   disabled={
