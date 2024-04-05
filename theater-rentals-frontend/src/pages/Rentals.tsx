@@ -12,8 +12,10 @@ import { theaterRentalSchema } from "../assets/form/formSchema";
 import AddWhiteIcon from "../assets/images/add-white.svg";
 import AddIcon from "../assets/images/add.svg";
 import UseApiService, { API_URL } from "../services/axios.service";
+import ToggleSwitch from "../Components/ToggleSwitch/ToggleSwitch";
 
 function Rentals() {
+  const [allowMultiple, setAllowMultiple] = useState<boolean>(false);
   const [type, setType] = useState<string | undefined>("0");
   const [showTitles, setShowTitles] = useState<string[]>([]);
   const [itemNames, setItemNames] = useState<string[]>([]);
@@ -258,7 +260,15 @@ function Rentals() {
         data: { ...data, image: imageId },
       };
       const res = await UseApiService().post(obj);
-      reset();
+      if (type === "0" && allowMultiple) {
+        resetField("item_name");
+        resetField("cost");
+        resetField("description");
+        resetField("quantity");
+        resetFileState();
+      } else {
+        reset();
+      }
       setImage(null);
       setImageSrc("");
       setLoading(false);
@@ -331,6 +341,18 @@ function Rentals() {
             <form id="add-form">
               <h1>Inventory Item</h1>
               <div className="mt-5">
+                {type === "0" && (
+                  <div className="mb-3">
+                    <label className="theaterData__form-formLabel mb-1">
+                      Allow multiple
+                    </label>
+                    <ToggleSwitch
+                      id="mulitple"
+                      checked={allowMultiple}
+                      onChange={setAllowMultiple}
+                    />
+                  </div>
+                )}
                 {
                   <div className="mb-3">
                     <label className="theaterData__form-formLabel mb-1">
@@ -351,6 +373,23 @@ function Rentals() {
                     </select>
                   </div>
                 }
+                <div className="mb-3">
+                  <label className="theaterData__form-formLabel mb-1">
+                    Item category<span className="text-danger">*</span>
+                  </label>
+                  <select
+                    disabled={
+                      (type === "1" && !itemNameSubscription[0]) || type === "2"
+                    }
+                    className="theaterData__form-formSelect form-select"
+                    {...register("category")}
+                  >
+                    <option value="">Choose category</option>
+                    <option value="costume inventory">Costume inventory</option>
+                    <option value="prop inventory">Prop inventory</option>
+                    <option value="set inventory">Set inventory</option>
+                  </select>
+                </div>
 
                 {type === "0" ? (
                   <Input
@@ -384,24 +423,6 @@ function Rentals() {
                     </select>
                   </div>
                 )}
-
-                <div className="mb-3">
-                  <label className="theaterData__form-formLabel mb-1">
-                    Item category<span className="text-danger">*</span>
-                  </label>
-                  <select
-                    disabled={
-                      (type === "1" && !itemNameSubscription[0]) || type === "2"
-                    }
-                    className="theaterData__form-formSelect form-select"
-                    {...register("category")}
-                  >
-                    <option value="">Choose category</option>
-                    <option value="costume inventory">Costume inventory</option>
-                    <option value="prop inventory">Prop inventory</option>
-                    <option value="set inventory">Set inventory</option>
-                  </select>
-                </div>
 
                 <Input
                   disabled={
