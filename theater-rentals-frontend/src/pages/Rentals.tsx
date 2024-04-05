@@ -8,11 +8,11 @@ import EditIcon from "../../src/assets/images/edit.svg";
 import "../App.scss";
 import ButtonLoader from "../Components/Input/ButtonLoader/ButtonLoader";
 import Input from "../Components/Input/Input";
+import ToggleSwitch from "../Components/ToggleSwitch/ToggleSwitch";
 import { theaterRentalSchema } from "../assets/form/formSchema";
 import AddWhiteIcon from "../assets/images/add-white.svg";
 import AddIcon from "../assets/images/add.svg";
 import UseApiService, { API_URL } from "../services/axios.service";
-import ToggleSwitch from "../Components/ToggleSwitch/ToggleSwitch";
 
 function Rentals() {
   const [allowMultiple, setAllowMultiple] = useState<boolean>(false);
@@ -349,6 +349,7 @@ function Rentals() {
                       <label className="mr-2 d-block">Allow multiple</label>
                       <ToggleSwitch
                         id="mulitple"
+                        name="multiple"
                         checked={allowMultiple}
                         onChange={setAllowMultiple}
                       />
