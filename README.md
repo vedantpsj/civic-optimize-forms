@@ -1,4 +1,4 @@
-# Theater Rentals inventory
+# Theater Rentals
 
 ## Introduction
 
@@ -6,7 +6,7 @@ Uses @oneblink/sdk to manage inventory based based on admin form and a user form
 
 ## Loom Walkthrough
 
-[View Loom Video Here](https://www.loom.com/share/bcd98d575bd743909db15101400d0a6d)
+[View Loom Video Here](https://www.loom.com/share/339032f0a91146fca352eb502685bfe6)
 
 ## Usage
 
@@ -29,7 +29,9 @@ civicplus api serve
 
 ### JSON file on server
 
-A json file on a server with read/write access need to be provided as file on civic-plus server has only read access and outside environment can not overwrite this file using filesystem (fs).
+A json file on a server with read/write access need to be provided as file on civic-plus server has only read access and outside environment can not overwrite this file using filesystem (fs), so a [web app](https://sandy-city.tech) to manage the inventory is added in order to manage the inventory.
+
+The JSON file is accessed through axios and is consumed in the code.
 
 ## Setup
 
@@ -191,6 +193,8 @@ One can add variables in the .blinkmrc.json
 [validated form example](https://github.com/oneblink/cli/blob/master/examples/api/form-server-validation/src/validate-form.js)
 
 [axios](https://www.npmjs.com/package/axios)
+
+[Civic-plus dashboard](https://console.transform.civicplus.com/)
 
 ## Dev notes
 
