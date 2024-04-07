@@ -1,20 +1,39 @@
-# Theater Rentals inventory
+# Theater Rentals
 
 ## Introduction
 
-Uses NodeJs and VanillaJS with HTML to manage inventory.
+Uses NodeJs and ReactJS to manage inventory.
 
 ## Loom Walkthrough
 
-[View Loom Video Here](https://www.loom.com/share/61b8e7d84a7d404bacb14277f9c043a7)
+[View Loom Video Here](https://www.loom.com/share/97f3c7ad2c344e1ab86063d3bf1eeef9)
 
 ## Usage
 
-NodeJs with express is used for server-side code and VanillaJs with Html is used for client-side.
+NodeJs with express is used for server-side code and ReactJS is used for client-side.
+
+- Integrated with Civicplus [form](https://sandy-theater-rentals-upwork-2.app.transform.civicplus.com/forms/33162)
+
+- Integrated with HCMS [Inventory items](https://content.civicplus.com/app/ut-sandycity/) and [Theater production](https://content.civicplus.com/app/ut-sandycity/)
+
+
+## Documents
+
+- [Theater Production](https://content.civicplus.com/api/content/ut-sandycity/docs#tag/Theater-Productions)
+
+- [Inventory Item](https://content.civicplus.com/api/content/ut-sandycity/docs#tag/Inventory-Item)
+
+- [Categories](https://content.civicplus.com/api/docs#tag/Categories)
+
 
 ### JSON file on server
 
 A json file on a server with read/write access is kept on the server which is used as the data-source for the inventory.
+
+[Theater Production](https://sandy-city.tech/api/production)
+
+[Theater Rentals](https://sandy-city.tech/api)
+
 
 ## Setup
 
@@ -52,6 +71,12 @@ cd client
 npm i
 ```
 
+3. Build project
+
+```
+npm run build
+```
+
 ### Deployment
 
 1. Login into droplet
@@ -77,16 +102,15 @@ cd server && npm i && pm2 start index.hjs
 5. Copy the client side files and folder to /var/www/html folder
 
 ```
-cp -r ~/civic-optimize-forms/client/.  /var/www/html
+cp -r build/.  /var/www/html
 ```
 
 ## Technologies
 
 1. NodeJS
-2. VanillaJS
+2. ReactJS
 3. Bootstrap
 4. Axios
-5. SCSS
 
 ## Reference Links
 

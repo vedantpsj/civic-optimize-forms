@@ -2,4 +2,4 @@
 */node_modules
 .blinkmrc.json
 tokens.json
-.env
+config.bat
